@@ -1,0 +1,521 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /*
+            make video match container size
+            make top margin match video heighta
+        */
+         @font-face {
+             font-family: 'br';
+             src: url("/Project/font/BlackOpsOne-Regular.ttf") format('truetype');
+             font-weight: normal;
+             font-style: normal;
+        }
+         body {
+            margin: 0;
+            padding: 0;
+            background-image: url("https://wallpapers.com/images/featured/circuit-board-v9sqijtzusq0u8hc.jpg");
+            background-attachment: fixed; 
+            background-size: cover; 
+            background-position: center;
+            font-family: 'br', sans-serif;
+            letter-spacing: .1rem;
+        }
+        .navbar .bv {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        /* <navbar> */
+            .navbar {
+            margin:0;
+            padding:0;
+        }
+        .navbar .container-fluid img {
+            height: 50px;
+            width: auto;
+        }   
+        .navbar-toggler {
+            border-color: aliceblue;
+            margin-right: 1rem;
+            background-color: rgb(9, 51, 61);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-position: center;
+            background-size: 100% 100%; 
+            border:1px solid aliceblue;
+        }
+        .navbar-nav .nav-link {
+            color:aliceblue ;
+            letter-spacing: .3rem;
+            text-shadow:
+            0.6px 0.6px 0.6px #0cfff3;
+        }
+        .dropdown-menu{
+            background-color:rgb(85, 9, 9); 
+            border:1px solid black;
+        }
+        .dropdown-menu li{
+            background-color: rgb(9, 51, 61);
+            margin:0;
+            padding:0; 
+        }
+        .dropdown-menu li a{
+            color:white;
+            text-align: center;
+            letter-spacing: 4px; 
+        }
+        .navbar-nav .nav-item:hover .nav-link {
+            filter:brightness(150%);
+            transition: brightness 0.4s ease;
+            color:aqua;
+            transform: translatey(-3px);
+        }
+        .buton {
+            background-color: rgb(9, 51, 61);
+            color: rgb(255, 255, 255);
+            border: 3px solid aliceblue;
+            padding: 5px 15px;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        .buton:hover {
+            color: rgb(0, 225, 255);
+            transform: translateY(-2px);
+        }
+        /* <page> */
+        .col-md-8{
+            background-color:rgba(56, 54, 54, 0.925);
+            color:aliceblue;
+            border-left: 4px solid #000;
+            border-right: 4px solid #000;
+        }
+        .invis{
+            margin:0px;
+            z-index: -1;
+        }
+        .liveFeed{
+            margin:0px;
+            border: 5px solid rgb(0, 0, 0);
+            position:fixed;
+            z-index: 2;
+        }
+        /* buttons */
+        .card{
+            background-color:rgba(97, 88, 88, 0.432);
+            border: 4.5px solid #000 !important;
+            padding:0; 
+            float: none;
+            margin: 0;
+            flex-shrink: 0;
+        }
+        @media(min-width: 768px) {
+            /*cards*/
+            .br{
+                margin-top:450px;
+            }
+            /*video*/
+            .invis{
+                position:fixed;
+                margin-top:35px;
+                
+            }
+            .liveFeed{
+                margin-top:35px;
+            }
+        }
+        .btn {
+            height: 60px;
+            width: 90px;
+            border: 2px solid black;
+            text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
+            font-size: 1rem; 
+        }
+        .DCMB{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 8px;  
+
+        }
+        .DCMB div{
+          display: flex;
+          flex-wrap: wrap;  
+        }
+        .btn span {
+            display: inline-block;
+            position: relative;
+            justify-content: center;
+            transition: transform 0.1s ease-in;
+        }
+        .dein{
+            font-size:13px;
+        }
+        .btn:hover span {
+            transform: translateY(-2px);
+        }
+        div .btn:hover{
+            background-color:rgb(13, 0, 128);
+            color:aqua;
+            border:2px solid white;
+        }
+        .Stitle{
+            text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000;
+            font-size: 1rem;
+        }
+        .col-md-8 .p-4{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          gap: 20px;
+          padding: 20px;
+          height:100%;
+          margin:0;
+        }
+        .Stitle{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          padding:4px;
+        }
+        .SB{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          padding-bottom:8px;
+        }
+        .SB span{
+            font-size:35px;
+        }
+        .LaserB{
+            height:0px;
+        }
+        
+
+        
+    </style>
+</head>
+<body>
+
+   
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <video autoplay muted loop class="bv">
+            <source src="\Project\img\video2.mp4" type="video/mp4">
+        </video>
+        <div class="container-fluid">
+            <a href="/Project/overview.html"><img class="navbar-brand" src="\Project\img\logo.png" height 40px; width auto;></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Project/overview.html">Overview</a>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item">
+                <a class="nav-link d-none d-lg-block" href="/Project/Specification.html">Specification</a>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Project/Schem.html">Schematics</a>
+            </li>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Project/login.html">Log In</a>
+              </li>
+            </ul>
+
+          </div>
+            <button onclick="back()" class="buton d-none d-lg-block">
+                back
+            </button>
+            <button onclick="forward()" class="buton d-none d-lg-block">
+                Return
+            </button>
+        </div>
+      </nav>
+
+        <div class="container vh-100 d-flex flex-column">
+            <div class="row justify-content-center flex-grow-1">
+                <div class="col-md-8 d-flex flex-column">  
+                    <div class="p-4 rounded shadow-sm flex-grow-1">
+
+                        <video class="liveFeed" controls>
+                        </video>
+                        <img class="invis" width="150" height="400" controls>
+                        </img>
+
+                        <div class="card br" style="width:  19.5rem; height: 13.2rem;">   
+                            <div class="DCMB"> 
+                                <div>
+                                    <button id="tl" type="button" class="btn btn-primary"><span>Top Left</span></button>
+                                    <button id="tr" type="button" class="btn btn-primary"><span>Top Right</span></button>
+                                </div>
+                                <div>
+                                    <button id="de" type="button" class="btn btn-primary"><span class="dein">Decrease</span></button>
+                                    <button id="break" type="button" class="btn btn-primary"><span>Mid</span></button>
+                                    <button id="in" type="button" class="btn btn-primary"><span class="dein">Increase</span></button>
+                                </div>
+                                <div>
+                                    <button id="bl" type="button" class="btn btn-primary"><span>Bottom Left</span></button>
+                                    <button id="br" type="button" class="btn btn-primary"><span>Bottom Right</span></button>
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="card br" style="width:  13.55rem; height: 13.2rem">    
+                            <div> 
+                                <span class="Stitle">Servo 1</span>
+                                <div class="SB">
+                                    <button id="S1m" type="button" class="btn btn-primary"><span>-</span></button>
+                                    <button id="S1p" type="button" class="btn btn-primary"><span>+</span></button>
+                                </div>
+                                <Span class="Stitle">Servo 2</Span>
+                                <div class="SB">
+                                    <button id="S2m" type="button" class="btn btn-primary"><span>-</span></button>
+                                    <button id="S2p" type="button" class="btn btn-primary"><span>+</span></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width:  22.55rem; height: 4.23rem;">    
+                            <div class="LaserB d-flex justify-content-start">
+                                <button id="Laser" type="button" class="btn btn-primary"><span>Toggle</span></button>
+                            </div>
+                            <div class="CheckB d-flex justify-content-end"> 
+                                <button id="Display" type="button" class="btn btn-primary"><span>Check</span></button>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function back() {
+            if (window.history.length > 1) {
+                window.history.back();
+            }
+        }
+        function forward() {
+                window.history.forward();
+        }
+    </script>
+
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-database-compat.js"></script>
+<script>
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCniFYH8ZEUnVdafLoS2HTal2zP0P_qOe4",
+        authDomain: "tracker-e8d68.firebaseapp.com",
+        databaseURL: "https://tracker-e8d68-default-rtdb.firebaseio.com",
+        projectId: "tracker-e8d68",
+        storageBucket: "tracker-e8d68.firebasestorage.app",
+        messagingSenderId: "259131379701",
+        appId: "1:259131379701:web:db831dbdb88d743fcedabc"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const TX = firebase.database().ref('ESP32WiFi/TX');
+    const RX = firebase.database().ref('ESP32WiFi/RX');
+
+    function rep(str,i,c) {
+    if(i > str.length-1) return str;
+    return str.substring(0,i) + c + str.substring(i+1);
+    }
+    function Increase(X,i){
+        if(X[i] + X[i+1] == "00"){
+            X = rep(X,i+1,"1")
+            M2RX(X)
+        }
+        else if(X[i] + X[i+1] == "01"){
+           X = rep(X,i,"1"); X = rep(X,i+1,"0")
+           M2RX(X)
+        }
+        else{
+            X = rep(X,i+1,"1")
+            M2RX(X)
+        }
+        return X
+    }
+    function Decrease(X,i){
+        if(X[i] + X[i+1] == "11"){
+            X = rep(X,i+1,"0")
+            M2RX(X)
+        }
+        else if(X[i] + X[i+1] == "10"){
+           X = rep(X,i,"0"); X = rep(X,i+1,"1")
+           M2RX(X)
+        }
+        else{
+            X = rep(X,i+1,"0")
+            M2RX(X)
+        }
+        return X
+    }
+    function bin2dec(n){
+        d = 0
+        for(i = 7; i >= 0; i--){
+            if(n[7-i] == "1"){
+                d += Math.pow(2, i)
+            }
+        }
+        return d
+    }
+    function M2RX(M){
+        RX.set(bin2dec(M))
+        console.log(M)
+    }
+
+    DCS = "00000000"
+    SMS = "01000000"
+    LZS = "10000000"
+
+// --- DC Motors
+    // Decrease
+    document.getElementById("de").addEventListener("click", () => {
+       DCS = Decrease(DCS,6)
+    });
+
+    //Increase
+    document.getElementById("in").addEventListener("click", () => {
+        DCS = Increase(DCS,6)
+    });
+    // Top Left
+    document.getElementById("tl").addEventListener("click", () => {
+        DCS = rep(DCS,2,"1"); DCS = rep(DCS,3,"0");
+        M2RX(DCS)
+    });  
+    // Top Right
+    document.getElementById("tr").addEventListener("click", () => {
+        DCS = rep(DCS,4,"1"); DCS = rep(DCS,5,"0"); 
+        M2RX(DCS) 
+    });   
+    // Mid   
+    document.getElementById("break").addEventListener("click", () => {
+        DCS = rep(DCS,4,"0"); DCS = rep(DCS,5,"0"); DCS = rep(DCS,2,"0"); DCS = rep(DCS,3,"0");  
+        M2RX(DCS)
+    });        
+    // Bottom Left
+    document.getElementById("bl").addEventListener("click", () => {
+        DCS = rep(DCS,2,"0"); DCS = rep(DCS,3,"1"); 
+        M2RX(DCS)
+    });  
+    // Bottom Right
+    document.getElementById("br").addEventListener("click", () => {
+        DCS = rep(DCS,4,"0"); DCS = rep(DCS,5,"1"); 
+        M2RX(DCS)
+    }); 
+
+// --- Servo
+  // Servo 1
+    // Decrease
+    document.getElementById("S1m").addEventListener("click", () => {
+        SMS = Decrease(SMS,6)
+    });
+    //Increase
+    document.getElementById("S1p").addEventListener("click", () => {
+        SMS = Increase(SMS,6)
+    });
+  // Servo 2
+    // Decrease
+    document.getElementById("S2m").addEventListener("click", () => {
+        SMS = Decrease(SMS,4)
+    });
+    //Increase
+    document.getElementById("S2p").addEventListener("click", () => {
+        SMS = Increase(SMS,4)
+    });
+    
+    
+// --- laser
+    document.getElementById("Laser").addEventListener("click", () => {
+        if(LZS[7] == "1"){
+            LZS = rep(LZS, 7, "0")
+        }
+        else{
+            LZS = rep(LZS, 7, "1")
+        } 
+        M2RX(LZS)
+    });
+
+// --- Check
+    document.getElementById("Display").addEventListener("click", () => {
+        TX.once("value")
+            .then( snapshot => {
+                console.log( "DCS:",DCS,"\nSMS:",SMS,"\nLZS:",LZS,"\nUSS:",snapshot.val().A)
+            })
+    });
+
+    function handleKeyPress(x) {
+        // DCM
+        if(x.key == "w"){
+            DCS = rep(DCS,2,"1"); DCS = rep(DCS,3,"0");
+            M2RX(DCS)
+        }
+        else if(x.key == "e"){
+            DCS = rep(DCS,4,"1"); DCS = rep(DCS,5,"0"); 
+            M2RX(DCS)
+        }
+        else if(x.key == "s"){
+            DCS = rep(DCS,4,"0"); DCS = rep(DCS,5,"0"); DCS = rep(DCS,2,"0"); DCS = rep(DCS,3,"0");  
+            M2RX(DCS)
+        }
+        else if(x.key == "z"){
+            DCS = rep(DCS,2,"0"); DCS = rep(DCS,3,"1"); 
+            M2RX(DCS)
+        }
+        else if(x.key == "x"){
+            DCS = rep(DCS,4,"0"); DCS = rep(DCS,5,"1"); 
+        M2RX(DCS)
+        }
+        else if(x.key == "d"){
+            DCS = Increase(DCS,6)
+        }
+        else if(x.key == "a"){
+            DCS = Decrease(DCS,6)
+        }
+        // Servo
+        else if(x.key == "k"){
+            SMS = Decrease(SMS,6)
+        }
+        else if(x.key == "i"){
+            SMS = Increase(SMS,6)
+        }
+        else if(x.key == "l"){
+            SMS = Decrease(SMS,4)
+        }
+        else if(x.key == "o"){
+            SMS = Increase(SMS,4)
+        }
+        // Laser
+        else if(x.key == "Space"){
+            if(LZS[7] == "1"){
+            LZS = rep(LZS, 7, "0")
+        }
+        else{
+            LZS = rep(LZS, 7, "1")
+        } 
+        M2RX(LZS)
+        }
+    } 
+    document.addEventListener("keypress", handleKeyPress);
+</script>
+</body> 
+</html>

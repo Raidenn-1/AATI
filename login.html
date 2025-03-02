@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text"></div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="pass">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Age</label>
+            <input type="email" class="form-control" id="age" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text"></div>
+          </div>
+          <div class="form-check">
+            <input id="op1" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Fem
+            </label>
+          </div>
+          <div class="form-check">
+            <input id="op2" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Mal
+            </label>
+          </div>
+        <button id = "btn" type="button" class="btn btn-primary">Submit</button>
+     
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email2" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="pass2">
+      </div>
+      <button id = "btn2" type="button" class="btn btn-primary">Submit</button>
+
+      
+      <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-app-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-auth-compat.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/11.1.0/firebase-database-compat.js"></script>
+      
+      <script>
+      const firebaseConfig = {
+          apiKey: "AIzaSyCniFYH8ZEUnVdafLoS2HTal2zP0P_qOe4",
+          authDomain: "tracker-e8d68.firebaseapp.com",
+          databaseURL: "https://tracker-e8d68-default-rtdb.firebaseio.com",
+          projectId: "tracker-e8d68",
+          storageBucket: "tracker-e8d68.firebasestorage.app",
+          messagingSenderId: "259131379701",
+          appId: "1:259131379701:web:db831dbdb88d743fcedabc"
+        };
+        const app = firebase.initializeApp(firebaseConfig);
+        console.log(firebaseConfig);
+
+        l = []
+        function user(email,pass,age,gen){
+            this.email = email;
+            this.pass = pass;
+            this.age = age;
+            this.gen = gen;
+            this.print = function(){
+              console.log("mail: ",this.email,"  pass: ",this.pass,"  age: ",this.age,"  gen: ",this.gen)
+            }   
+        }
+        document.getElementById("btn").onclick = function() {
+            const user1 = new user(
+            document.getElementById("email").value,
+            document.getElementById("pass").value,
+            document.getElementById("age").value);
+            if(document.getElementById("op1").checked){
+                user1.gen = "Fem"
+             }
+            else{
+                user1.gen = "Mal"
+            }
+            user1.print()
+            l.push(user1)
+
+            firebase.auth().createUserWithEmailAndPassword(user1.email, user1.pass)
+              .then((userCredential) => {
+                var user = userCredential.user;
+                console.log("Worked");
+                window.location.href = "Specification.html"
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log("Failed");
+              });
+        }
+        
+        document.getElementById("btn2").onclick = function() {
+            firebase.auth().signInWithEmailAndPassword( document.getElementById("email2").value, document.getElementById("pass2").value)
+              .then((userCredential) => {
+                // Signed in
+                var user = userCredential.user;
+                console.log("Signed it");
+              })
+              .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log("Brrrrr");
+              });
+        }
+      </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @font-face {
+             font-family: 'br';
+             src: url("/Project/font/BlackOpsOne-Regular.ttf") format('truetype');
+             font-weight: normal;
+             font-style: normal;
+        }
+        body {
+            min-width: 50vh;
+            height:100%;
+            margin: 0;
+            padding: 0;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            font-family: 'br', sans-serif;
+            letter-spacing: .2rem;
+        }
+        .vb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }   
+        @keyframes tsa {
+            0% { text-shadow: -2px 2px 0 #c0c0c0,2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000; } 
+            25% { text-shadow: 2px -2px 0 #c0c0c0,-2px -2px 0 #000,2px 2px 0 #000,-2px 2px 0 #000; }
+            50% { text-shadow: 2px 2px 0 #c0c0c0,2px -2px 0 #000,2px -2px 0 #000,2px 2px 0 #000; }
+            75% { text-shadow: -2px -2px 0 #c0c0c0,-2px 2px 0 #000,-2px 2px 0 #000,-2px -2px 0 #000; }
+            100% { text-shadow: -2px 2px 0 #c0c0c0,2px 2px 0 #000,-2px -2px 0 #000,2px -2px 0 #000; }
+        }
+        @keyframes tvl {
+            0%   {transform: translateX(-10%);}
+            100% {transform: translateX(100%);}
+        }
+        @keyframes lvt {
+            0%   {transform: translateX(100%);}
+            100% {transform: translateX(-43%);}
+        }
+        @keyframes brrr {
+            0%   {transform: translateY(40%);}
+            50%  {transform: translateY(-40%);}
+            100% {transform: translateY(40%);}
+        }
+        @keyframes brrrr {
+            0%   {transform: translateY(-40%);}
+            50%  {transform: translateY(40%);}
+            100% {transform: translateY(-40%);}
+        }
+        @keyframes color {
+            0%   {color:rgb(0, 255, 0)} 
+            20%  {color:rgb(0, 255, 255)}
+            40%  {color:rgb(0, 0, 255)}
+            60%  {color:rgb(255, 0, 255)}
+            80%  {color:rgb(255, 0, 0)}
+            100% {color:rgb(255, 255, 0)}
+        }
+        @keyframes bcolor {
+            0%   {border-color:rgb(0, 255, 0)} 
+            20%  {border-color:rgb(0, 255, 255)}
+            40%  {border-color:rgb(0, 0, 255)}
+            60%  {border-color:rgb(255, 0, 255)}
+            80%  {border-color:rgb(255, 0, 0)}
+            100% {border-color:rgb(255, 255, 0)}
+        }
+        @keyframes color2 {
+            0%   {color:rgb(255, 255, 0)}
+            20%  {color:rgb(255, 0, 0)}
+            40%  {color:rgb(255, 0, 255)}
+            60%  {color:rgb(0, 0, 255)}
+            80%  {color:rgb(0, 255, 255)}
+            100% {color:rgb(0, 255, 0)} 
+        }
+        @keyframes bcolor2 {
+            0%   {border-color:rgb(255, 255, 0)}
+            20%  {border-color:rgb(255, 0, 0)}
+            40%  {border-color:rgb(255, 0, 255)}
+            60%  {border-color:rgb(0, 0, 255)}
+            80%  {border-color:rgb(0, 255, 255)}
+            100% {border-color:rgb(0, 255, 0)} 
+        }
+        .br h1 {
+            color: #d4af37;
+            font-weight: bold;
+            animation: tsa 1s infinite, tvl 3.5s linear infinite,color 1s infinite;
+            font-size:70px;
+            white-space: nowrap;
+        }
+        .br{
+            position: relative;
+            background-color:rgba(56, 54, 54, 0.925);
+            margin-top:13vh;
+            padding:5vh;
+            border-top:5px solid #d4af37;
+            border-bottom:5px solid #d4af37;
+            animation: brrr 3.5s infinite, bcolor2 1s infinite;
+        }
+        .rb h1{
+            color: #d4af37;
+            font-weight: bold;
+            animation: tsa 1s infinite, lvt 3.5s linear infinite,color2 1s infinite;
+            font-size:70px;
+            white-space: nowrap;
+        }
+        .rb{
+            position: relative;
+            background-color:rgba(56, 54, 54, 0.925);
+            margin-top:35vh;
+            padding:5vh;
+            border-top:5px solid #d4af37;
+            border-bottom:5px solid #d4af37;
+            animation: brrrr 3.5s linear infinite, bcolor 1s infinite;
+        }
+        .mid{
+            position:relative;
+            height: 100%;
+            width:100%;
+        }
+        .mid img{
+            position:absolute;
+            left:0;
+            top:50vh;
+            right:0;
+            bottom:0;
+             margin:auto;
+             height:200px;
+             width:auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="vb">
+        <source src="https://www.shutterstock.com/shutterstock/videos/3396420117/preview/stock-footage-loop-glittering-glow-red-blue-digital-technology-grid-line-distort-mosaic.webm" type="video/mp4">
+    </video>
+    <div class="mid"><a href="/Project/Specification.html"><img src="/Project/img/fpga.gif"></a></div>
+    <div class="br">
+        <h1>404!</h1>
+    </div>  
+    <div class="rb">
+        <h1>Page Doesn't Exist!</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        const video = document.querySelector(".vb");
+        video.playbackRate = 0.6;
+    </script>
+</body>
+</html>

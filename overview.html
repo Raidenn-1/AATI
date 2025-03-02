@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        @font-face {
+             font-family: 'br';
+             src: url("/Project/font/BlackOpsOne-Regular.ttf") format('truetype');
+             font-weight: normal;
+             font-style: normal;
+        }
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://wallpapers.com/images/featured/circuit-board-v9sqijtzusq0u8hc.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            font-family: 'br', sans-serif;
+            letter-spacing: .2rem;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .row {
+            flex: 1;
+            margin: 0;
+        }
+        .col-md-8 {
+            background-color: rgba(56, 54, 54, 0.925);
+            color: aliceblue;
+            border-left: 4px solid #000;
+            border-right: 4px solid #000;
+            min-height: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .c {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .c img {
+            height: 450px;
+            width: auto;
+        }
+        .c p {
+            color: aliceblue;
+            font-size: 39px;
+            text-align: center;
+        }
+        @keyframes tsa {
+            0% { text-shadow: -1px 1px 0 #c0c0c0,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000; }
+            25% { text-shadow: 1px -1px 0 #c0c0c0,-1px -1px 0 #000,1px 1px 0 #000,-1px 1px 0 #000; }
+            50% { text-shadow: 1px 1px 0 #c0c0c0,1px -1px 0 #000,1px -1px 0 #000,1px 1px 0 #000; }
+            75% { text-shadow: -1px -1px 0 #c0c0c0,-1px 1px 0 #000,-1px 1px 0 #000,-1px -1px 0 #000; }
+            100% { text-shadow: -1px 1px 0 #c0c0c0,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000; }
+        }
+        .c h1 {
+           color: #d4af37;
+            font-weight: bold;
+            font-size: 34px;
+            animation: tsa 0.7s infinite;
+            margin-top:20px;
+        }
+
+        /* Page Navbar */
+        .page-nav {
+            background-color: rgb(74, 13, 131);
+            margin-top: auto;
+            position:relative;
+        }
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: absolute;
+                bottom: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgb(74, 13, 131);
+                padding: 0.5rem; }
+                .dropdown-menu {
+                position: absolute !important;
+                bottom: 0 !important;
+                transform: translateY(-60%);
+                margin-bottom: 0.5rem;
+            }
+        }
+        .page-nav .nav-link {
+            color: aliceblue;
+            text-shadow:
+            0.6px 0.6px 0.6px #000000;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            letter-spacing: .2rem;
+            letter-spacing: .4rem;
+        }
+        .page-nav .navbar-toggler {
+            border-color: aliceblue;
+            margin-right: 1rem;
+            background-color: rgb(77, 50, 139);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-position: center;
+            background-size: 100% 100%;
+            border: 1px solid aliceblue;
+        }
+        .page-nav .dropdown-menu {
+            background-color: rgb(48, 9, 85);
+            border: 1px solid black;
+            width: 100%;
+            bottom: 100%;
+             top: auto;
+            margin-bottom: 0.5rem;
+        }
+        .dropdown-menu {
+                position: absolute !important;
+                bottom: 0 !important;
+                transform: translateY(-60%);
+                margin-bottom: 0.5rem;
+            }
+        .page-nav .dropdown-menu li {
+            background-color: rgb(102, 12, 185);
+        }
+        .page-nav .dropdown-menu li a {
+            color: white;
+            text-align: center;
+            letter-spacing: 4px;
+            text-shadow: -1px -1px 1px #ffffff,1px -1px 1px #000,-1px 1px 1px #000,1px 1px 1px #000;
+            font-size:1.6rem;
+        }
+        .page-nav .nav-item:hover {
+            background-color: rgb(89, 15, 158);
+            transition: background-color 0.4s ease;
+        }
+        
+        .page-nav .nav-item:hover .nav-link{
+            transform: translateY(-2px);
+        }
+        .page-nav .nav-item {
+            flex: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="c">
+                    <img src="\Project\img\logo.png">
+                        <h1 class="text-center mb-4">AAOTI - Anti Air Tracker and Interceptor</h1>
+                        <p>Through the use of image processing and an ultrasonic sensor mounted to two servo motors the AATI device is able to detect, lock on and defensively intercept potentially hostile aerial objects </p>
+                </div>
+                <nav class="navbar navbar-expand-lg page-nav">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler w-100  dropup" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse  dropup" id="navbarNav">
+                            <ul class="navbar-nav w-100">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Project/Specification.html">Specification</a>
+                                </li>
+                                <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Project/Schem.html">Schematics</a>
+                                </li>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        const video = document.querySelector(".vb");
+        video.playbackRate = 0.6;
+    </script>
+</body>
+</html>

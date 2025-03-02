@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+         @font-face {
+             font-family: 'br';
+             src: url("/Project/font/BlackOpsOne-Regular.ttf") format('truetype');
+             font-weight: normal;
+             font-style: normal;
+        }
+         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'br', sans-serif;
+            letter-spacing: .2rem;
+        }
+        .vb {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        /* <navbar> */
+        .navbar {
+            margin: 0;
+            padding: 0;
+            background-color:rgb(18, 102, 77);
+            z-index: 1030;
+        }
+        .navbar .container-fluid img {
+            height: 50px;
+            width: auto;
+        }   
+        .navbar-toggler {
+            border-color: aliceblue;
+            margin-right: 1rem;
+            background-color:rgb(34, 126, 72);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-position: center;
+            background-size: 100% 100%; 
+            border:1px solid aliceblue;
+        }
+        .navbar-nav .nav-link {
+            color:aliceblue;
+            letter-spacing: .3rem;
+            text-shadow:
+            0.6px 0.6px 0.6px #03f037;
+        }
+        .dropdown-menu{
+            background-color:rgb(22, 133, 18); 
+            border:1px solid black;
+        }
+        .dropdown-menu li{
+            background-color:rgb(23, 97, 66);
+            margin:0;
+            padding:0; 
+        }
+        .dropdown-menu li a{
+            color:white;
+            text-align: center;
+            letter-spacing: 4px; 
+            text-shadow:
+            -1px -1px 1px #ffffff,1px -1px 1px #000,-1px 1px 1px #000,1px 1px 1px #000;
+        }
+        .navbar-nav .nav-item:hover{
+          background-color:rgb(53, 150, 66);
+            transition: background-color 0.4s ease;
+        }
+        .navbar-nav .nav-item:hover .nav-link {
+            transform: translatey(-3px);
+        }
+        .current{
+          pointer-events: none;
+        }
+        .buton {
+            background-color: rgb(13, 77, 27);
+            color: rgb(255, 255, 255);
+            border: 1px solid aliceblue;
+            padding: 5px 15px;
+            margin-right: 1rem;
+            transition: all 0.3s ease;
+        }
+        .buton:hover {
+            color: rgb(9, 255, 0);
+            transform: translateY(-2px);
+        }
+        /* <page> */
+        .col-md-8{
+            background-color:rgba(56, 54, 54, 0.925);
+            color:aliceblue;
+            border-left: 4px solid #000;
+            border-right: 4px solid #000;
+            display:center;
+        }
+        .col-md-8 .p-4{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          gap: 20px;
+          padding: 20px;
+        }
+
+        /* <card> */
+        .name {
+            font-family: 'Arial', sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            text-align:center;
+            background-color:rgb(73, 67, 67);
+            border: 2px solid #383636 !important;
+            margin:2px;
+            margin-top:4px;
+            margin-bottom:8px;
+        }
+        .card p{
+            color: pink;
+            text-align:center;
+            margin:0;
+            padding:0;
+            font-size:24px;
+        }
+        .card{
+            background-color:rgba(97, 88, 88, 0.432);
+            border: 4.5px solid #000 !important;
+            padding:0; 
+            float: none;
+            margin: 0;
+            flex-shrink: 0;
+        }
+        .card img{
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+            border-bottom: 4px solid #000 !important;
+            transition: all is ease;
+        }
+        .card:hover img{
+          filter: brightness(70%);
+          transition:all 0.28s ease-in-out;
+        }
+        .card:not(:hover) img{
+          transition:all 0.28s ease;
+        }
+        .card:hover .overlay-text{
+          transition:all 0.28s ease;
+          opacity:1;
+          font-size:16.5px;
+          background-color: #00000077;
+          border: 2.7px solid black;
+        }
+        .card:not(:hover) .overlay-text{
+          transition:all 0.28s ease;
+          opacity:0;
+          font-size:0px;
+        }
+
+        /* <footer> */
+          footer {
+            background-color:rgb(18, 102, 77);
+            color: aliceblue;
+        }
+        footer a {
+            color:aliceblue;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: rgb(0, 255, 42);
+        }
+    </style>
+</head>
+<body>
+  
+  <video autoplay muted loop class="vb">
+    <source src="\Project\img\video.mp4" type="video/mp4">
+</video>
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+          <a href="/Project/overview.html"><img class="navbar-brand" src="\Project\img\logo.png" height 40px; width auto;></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Project/overview.html">Overview</a>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item current">
+                <a class="nav-link d-none d-lg-block">Specification</a>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Project/Schem.html">Schematics</a>
+            </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/Project/login.html">Log In</a>
+              </li>
+              <li><a class="nav-link active d-none d-lg-block"> / </a></li>
+              <li class="nav-item ctrli">
+                <a class="nav-link active" aria-current="page" href="/Project/Control.html">Control</a>
+              </li>
+            </ul>
+          </div>
+          <button onclick="back()" class="buton d-none d-lg-block">
+            back
+        </button>
+        <button onclick="forward()" class="buton d-none d-lg-block">
+          Return
+      </button>
+        </div>  
+      </nav>
+
+      <div class="container" style="margin-top:50px;">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="p-4 rounded shadow-sm">
+                  
+                    <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>E</span><span>S</span><span>P</span><span>3</span><span>2</span>  
+                        </h1>
+                          <img src="\Project\img\esp32.png" class="card-img-top" alt="..."></a>
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Microcontroller used for its WiFi connectivity to establish comms between the DE10-Lite and the Realtime-firebase</span>
+                          </div></a>
+                        <div class="card-body">
+                          <p class="card-title">WiFi Adapter</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>E</span><span>S</span><span>P</span><span>3</span><span>2</span><span>C</span><span>A</span><span>M</span>
+                        </h1>
+                          <img src="\Project\img\esp32cam.png" class="card-img-top" alt="..."></a>
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Microcontroller centered around its camera used to gather intel and report back to the database. System-wide commands are issued based on live feed</span>
+                          </div></a>
+                        <div class="card-body">
+                          <p class="card-title">WiFi Adapter</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>D</span><span>E</span><span>1</span><span>0</span><span>L</span><span>I</span><span>T</span><span>E</span>
+                        </h1>
+                        <img src="\Project\img\fpga.gif" class="card-img-top" alt="...">
+                        <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                          <span>Control center responsible for all electronical components within the system</span>
+                      </div></a>
+                        <div class="card-body">
+                          <p class="card-title">Control Center</p>
+                        </div>
+
+                    </div>
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2" style="font-size:2.3rem">
+                          <span>L</span><span>2</span><span>9</span><span>3</span><span>D</span>
+                        </h1>
+                          <img src="\Project\img\l293d.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Motor driver enables greater control over the 4 DC motors</span>
+                        </div></a>
+                        <div class="card-body">
+                          <p class="card-title">Motor Driver</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>7</span><span>4</span><span>L</span><span>S</span><span>2</span><span>2</span><span>4</span>
+                        </h1>
+                          <img src="\Project\img\74224.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Stabilizes signals that pass through to ensure proper behaviour from components</span>
+                        </div></a>
+                        <div class="card-body">
+                          <p class="card-title">PWM Amplifier</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>S</span><span>E</span><span>R</span><span>V</span><span>O</span>
+                        </h1>
+                          <img src="\Project\img\servo.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Steers the camera and ultrasonic sensor to follow the object being tracked, based on the live feed provided by the camera in combination with the ultrasonic</span>
+                        </div></a>
+                        <div class="card-body">
+                          <p class="card-title">Aiming Motor</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>D</span><span>C</span><span>M</span>
+                        </h1>
+                          <img src="\Project\img\dcm.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue">
+                            <div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Motors used to spin the tires on which everything stands</span>
+                        </div>
+                      </a>
+                        <div class="card-body">
+                          <p class="card-title">Driving Motor</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                          <span>L</span><span>M</span><span>7</span><span>8</span><span>0</span><span>5</span>
+                        </h1>
+                          <img src="\Project\img\lm7805.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Reduces and stabilizes the batteries natural voltage to match the needs of all components involved</span>
+                        </div></a>
+                        <div class="card-body">
+                          <p class="card-title">Voltage Stabilizer</p>
+                        </div>
+                      </div>
+
+                      <div class="card" style="width:  22.55rem;">
+                        <h1 class="name p-2">
+                            <span>H</span><span>C</span><span>-</span><span>S</span><span>R</span><span>0</span><span>4</span>
+                        </h1>
+                          <img src="\Project\img\hcsr04.png" class="card-img-top" alt="...">
+                          <a style="text-decoration:none; color:aliceblue"><div class="overlay-text position-absolute top-50 start-50 translate-middle p-3 text-center w-75">
+                            <span>Uses ultrasonic wave to measure and report the distance from any object</span>
+                        </div></a>
+                        <div class="card-body">
+                          <p class="card-title"  style="font-size:23px;">Ultrasonic Sensor</p>
+                        </div>
+                      </div>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-5">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 mb-3">
+                  <h5 class="text-uppercase mb-4">About</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="/Project/404.html">Datachart</a></li>
+                      <li><a href="/Project/404.html">Circuits</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <h5 class="text-uppercase mb-4">Architects</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="/Project/br.html">Hitlamar</a></li>
+                      <li><a href="/Project/br.html">Ori "Gingy" hel</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4 mb-3">
+                  <h5 class="text-uppercase mb-4">Contact</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="/Project/contact.html">Report an Issue</a></li>
+                      <li><a href="https://x.com/j8brJrWxG1GoBlV?t=Hz9gmD6G0LW-PnZ4ixC2Eg&s=09">Twitter</a></li>
+                      <li><a href="https://www.instagram.com/ori_426/profilecard/?igsh=NzFtMjJiMnN4N2N2">Instagram</a></li>
+                      <li><a href="/Project/404.html">Facebook</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-12 text-center">
+                  <p class="mb-0">&copy; Me. All rights reserved.</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+    
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/v8/firebase.User
+            var uid = user.uid;
+            // ...
+          } else {
+            document.getElementsByClassName(ctrli).style.color = "red";
+          }
+      });
+      function back() {
+          if (window.history.length > 1) {
+              window.history.back();
+          }
+      }
+      function forward() {
+                window.history.forward();
+        }
+    </script>
+  </body>
+</html>
